@@ -40,14 +40,23 @@ sudo apt-get install git
 
 2. Clone repository
 ```bash
-    git clone https://github.com/SkiStalker/DeliveryServiceGO
+git clone https://github.com/SkiStalker/DeliveryServiceGO
 ```
-3. Copy __ALL__ env files from [env_examples](./env_examples) folder to project root and specify your own values in them
 
-4. Install docker <br>
+3. Move to project directory
+```bash
+cd ./DeliveryServiceGo
+```
+
+4. Copy __ALL__ env files from [env_examples](./env_examples) folder to project root and specify your own values in them
+```bash
+cp ./env_examples/* ./
+```
+
+5. Install docker <br>
 See [how to install docker](https://docs.docker.com/desktop/setup/install/linux/)
 
-5. Start docker compose
+6. Start docker compose
 ```bash
 docker compose up
 ```
