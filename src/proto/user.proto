@@ -1,0 +1,63 @@
+syntax = "proto3";
+
+package user;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "grpc_build/user/user_proto";
+
+service UserService {
+  rpc CreateUser (CreateUserRequest) returns (CreateUserResponse);
+  rpc GetUser (GetUserRequest) returns (GetUserResponse);
+  rpc SearchUsers (SearchUsersRequest) returns (SearchUsersResponse);
+}
+
+message GetUserRequest {
+    string id = 1;
+}
+
+message GetUserResponse {
+    string message = 2;
+    optional UserData user_data = 3;
+}
+
+message SearchUsersRequest {
+    int32 page = 1;
+    optional string first_name = 2;
+    optional string second_name = 3;
+}
+
+message SearchUsersResponse {
+    optional BriefUserArray users = 3;
+}
+
+message CreateUserRequest {
+  string name = 1;
+  int32 age = 2;
+}
+
+message CreateUserResponse {
+}
+
+
+message BriefUserArray {
+    repeated BriefUserData arr = 1;
+}
+
+message UserData {
+    string id = 1;
+    string username = 2;
+    string first_name = 3;
+    string second_name = 4;
+    optional string patronymic = 5;
+    optional string email = 6;
+    optional string phone = 7;
+    optional google.protobuf.Timestamp birth = 8;
+}
+
+message BriefUserData {
+    string id = 1;
+    string username = 2;
+    string first_name = 3;
+    string second_name = 4;
+}
